@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block contentA %}
+    
+<h1 class="section-title">Make a Post</h1>
+<div class="container mb-3 form-floating">
+
+  <form method="POST">
+    <textarea name="text" id="text" class="form-control" placeholder="Leave a comment here"></textarea>
+    <br />
+    <div align="center">
+      <button type="submit" class="btn btn-lg btn-primary">Post</button>
+      <a href="/home"
+      ><button type="button" class="btn btn-lg btn-secondary">Back</button></a>
+
+    </div>
+  </form>
+  <br />
+</div>
+
+{% endblock contentA %}

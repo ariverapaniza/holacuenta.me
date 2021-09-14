@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap 5 CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- Custom main.css -->
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+
+    <script
+    src="https://kit.fontawesome.com/999ca2bb93.js"
+    crossorigin="anonymous"
+    ></script>
+
+    <!-- ---------Dropdown NavBar Style Components----------- -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}" />
+    <!-- Boxiocns CDN Link -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+        <!-- Icons -->
+        <link
+        rel="stylesheet"
+        href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+      />
+  
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Contact Us Form -->
+
+      <!-- Favicons -->
+    <link href="{{ url_for('static', filename='favicon.png')}}" rel="icon">
+
+
+    <title>{% block title %} {{title}} {% endblock %}</title>
+
+      <!-- NAVBAR -->
+
+          <!-- <nav class="sidebar"> -->
+            <div class="sidebar close">
+              <div class="logo-details">
+                <a href="/home"> <img
+                  src="{{ url_for('static', filename='holacuentame_logo_80px_black.png')}}"
+                  alt="HolaCuentame Logo"
+                /> </a>
+                <span class="logo_name">Cuenta.me</span>
+              </div>
+              <ul class="nav-links">
+                <li>
+                  <a href="/home">
+                    <i class="bx bx-grid-alt"></i>
+                    <span class="link_name">Dashboard</span>
+                  </a>
+                  <ul class="sub-menu blank">
+                    <li><a class="link_name" href="/home">Home</a></li>
+                  </ul>
+                </li>
+  
+                {% if current_user.is_authenticated %}
+                <li>
+                  <div class="iocn-link">
+                    <a href="/home">
+                      <i class="bx bx-book-alt"></i>
+                      <span class="link_name">Posts</span>
+                    </a>
+                    <i class="bx bxs-chevron-down arrow"></i>
+                  </div>
+                  <ul class="sub-menu">
+                    <li><a class="link_name" href="/home">Posts</a></li>
+                    <li><a href="/posts/{{current_user.username}}"> {{current_user.username}} Post</a></li>
+                    <li><a href="/create-post">Create Post</a></li>
+        
+                  </ul>
+                </li>
+      
+                <li>
+                  <a href="/account">
+                    <i class='bx bxs-user-account' ></i>
+                    <span class="link_name">Account</span>
+                  </a>
+                  <ul class="sub-menu blank">
+                    <li><a class="link_name" href="/account">Account</a></li>
+                  </ul>
+                </li>
+      
+                <li>
+                  <a href="/logout">
+                    <i class="bx bx-log-out"></i>
+                    <span class="link_name">Log Out</span>
+                  </a>
+                  <ul class="sub-menu blank">
+                    <li><a class="link_name" href="/logout">Log Out</a></li>
+                  </ul>
+                </li>
+                {% else %}
+                <li>
+                  <a href="/login">
+                    <i class="bx bx-log-in"></i>
+                    <span class="link_name">Login</span>
+                  </a>
+                  <ul class="sub-menu blank">
+                    <li><a class="link_name" href="/login">Login</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="iocn-link">
+                    <a href="/sign-up">
+                      <i class="bx bx-user-pin"></i>
+                      <span class="link_name">Sign-Up</span>
+                    </a>
+                    <!-- <i class="bx bxs-chevron-down arrow"></i> -->
+                  </div>
+                  <ul class="sub-menu">
+                    <li><a class="link_name" href="/sign-up">Sign-Up</a></li>
+                  </ul>
+                </li>
+      
+                {% endif %}
+
+                <li>
+                  <a href="/contact">
+                    <i class='bx bxs-contact'></i>
+                    <span class="link_name">Contact Us</span>
+                  </a>
+                  <ul class="sub-menu blank">
+                    <li><a class="link_name" href="/contact">Contact Us</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="/about">
+                    <i class='bx bx-info-circle'></i>
+                    <span class="link_name">About</span>
+                  </a>
+                  <ul class="sub-menu blank">
+                    <li><a class="link_name" href="/about">About</a></li>
+                  </ul>
+                </li>
+
+
+
+                <li>
+                  <div class="profile-details">
+                    <div class="profile-content">
+                      <a
+                          class="link_name"
+                          href="http://arpportfoliov1.000webhostapp.com/"
+                          target="_blank"
+                        >
+                      <img
+                        src="{{ url_for('static', filename='profile.jpg')}}"
+                        alt="profileImg"
+                      />
+                    </div>
+                    <div class="name-job">
+                      <div class="profile_name">
+                        <a
+                          class="link_name"
+                          href="http://arpportfoliov1.000webhostapp.com/"
+                          target="_blank"
+                        >
+                          Arturo Rivera Paniza</a
+                        >
+                      </div>
+                      <div class="job">Programmer</div>
+                    </div>
+                    <a class="link_name" href="/logout"><i class="bx bx-log-out"></i></a>
+                    
+                    
+                  </div>
+                </li>
+              </ul>
+            </div>
+  
+
+
+</head>
+<body>
+      <!-- BODY -->
+  <section class="home-section">
+    <div class="home-content">
+        <i class="bx bx-menu"></i>
+        <span class="image">
+          <a href="/home"> <img
+            src="{{ url_for('static', filename='holacuentame_200px_height_black.png')}}"
+            alt="Logo HolaCuenta.me Full"
+          /> </a>
+        </span>
+
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %} {% for category, message in messages %} {% if category ==
+          'error' %}
+          <div class="alert alert-danger alter-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+          {% else %}
+          <div class="alert alert-success alter-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+          {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+        </div>
+
+          <!-- <div class="container">{% block content %}{% endblock %}</div> -->
+
+          <div>
+
+            {% block contentA %}
+            
+            {% endblock contentA %}
+        
+            {% block contentB %}
+            
+            {% endblock contentB %}
+        
+            {% block contentC %}
+            
+            {% endblock contentC %}
+        
+            {% block contentD %}
+            
+            {% endblock contentD %}
+        
+          </div>
+        
+
+
+        </section>
+
+        
+
+        <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+    <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='index.js')}}"
+    ></script>
+    <!-- ------------Dropdown NavBar Style JS------------ -->
+    <script src="{{ url_for('static', filename='ddscript.js')}}"></script>
+
+    <!-- Contact Us JS Files -->
+
+    <script src="{{ url_for('static', filename='assets/vendor/php-email-form/validate.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/main.js')}}"></script>
+
+
+
+</body>
+</html>

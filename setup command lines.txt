@@ -1,0 +1,53 @@
+py -m ensurepip --upgrade  // upgrade python pip
+
+pip install flask-wtf    // This is to install flask forms
+
+pip install email_validator  // this is to validate that the email is actually valid email
+
+pip install flask-sqlalchemy // this is to install the database component
+
+In Python Console:
+    from arp_flask.models import User
+    from arp_flask import db
+    db.create_all()
+
+pip3 install postgres  // to install a most robust database component
+Download pgadmin to manage de DB from the computer MP: @Rp596693
+https://www.enterprisedb.com/downloads/postgres-postgresql-downloads  // This will install the complete component
+    ** This is the line to access the db from the __init__:    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://arppostgres:arp596693@localhost:5432/dbflaskapp'
+    DB Name: dbflaskapp
+    create user arppostgres with password 'arp596693'   //  DO NOT USE SPECIAL CHARACTERS
+    \du    // to see the list of the superusers in postgress
+    alter user arppostgres with superuser;    // this allows him to be a superuser
+    alter user arppostgres with createdb;   // This allows it to create databases
+    alter user arppostgres with createrole;   // This allows it to create roles
+    \c postgres arppostgres    // The \c is to connect to a database, the second argument is the database name and the third is the user, then it will ask for the password. 
+    create database dbflaskapp;    // This will create the database with our new user
+    \c dbflaskapp arppostgres; //  With this we are going to connect to our new database
+    alter user arppostgres with password 'arp596693';   // We can change the password
+    ** In the terminal** psql -d arppostgres -U arp596693  // This will access the database from the terminal, then we have to type the password
+    ** to see the content of the table in the terminal** select * from public."user_details"; 
+
+
+
+    In Python Console:
+    from arp_flask import db
+    db.create_all()
+    from arp_flask.models import User
+    User.query.all()  // Should return [] empty
+
+
+pip install flask-bcrypt    // This will install the encryption tool for the passwords
+    after this we have to log into the python terminal to drop the database
+        from arp_flask import db
+        db.drop_all()     // IF WE MADE ANY CHANGES TO THE DB WE HAVE TO DO THIS STEP
+        db.create_all()
+
+
+pip install flask-login  //  this is the login manager for Flask
+
+pip install -U itsdangerous  // this is the module to reset the password, check first if is not already installed with 'pip show itsdangerous'
+
+pip install flask-mail  //  This creates a flask mail server to send the emails to reset the password
+
+pip freeze > requirements.txt // This creates a file with the requirements necesary to run the application
